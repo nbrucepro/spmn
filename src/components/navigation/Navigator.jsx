@@ -1,6 +1,6 @@
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import {
-  CardStyleInterpolators,
+    
   createStackNavigator,
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -8,9 +8,10 @@ import * as SecureStore from "expo-secure-store";
 import React from "react";
 import Signup from "../../screens/Signup";
 import { TouchableOpacity, View } from "react-native";
+import SignIn from "../../screens/SignIn";
 
 export default Navigator = () => {
-  return <AppNavigator />;
+  return <AuthNavigator />;
 };
 
 const AuthNavigator = () => {
@@ -21,12 +22,11 @@ const AuthNavigator = () => {
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: "horizontal",
-        cardStyleInterpolator: CardStyleInterpolators,
-      }}
+         }}
     >
       <Stack.Screen
         name="SignIn"
-        component={Login}
+        component={SignIn}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -34,7 +34,7 @@ const AuthNavigator = () => {
         component={Signup}
         options={{ headerShown: false }}
       />
-    </Stack.Navigator>
+    </Stack.Navigator> 
   );
 };
 
@@ -50,7 +50,7 @@ const AppNavigator = () => {
         setIsAuthenticated(true);
       }
     };
-    getToken();
+    // getToken();
   }, []);
 
   if (!isAuthenticated) return <AuthNavigator />;

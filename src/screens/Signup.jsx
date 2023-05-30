@@ -49,7 +49,7 @@ const Signup = ({ navigation }) => {
       } else {
         Alert.alert("Success", "you've successfully signed up!");
         resetForm();
-        // navigation.navigate('Signin')
+        navigation.navigate('SignIn')
       }
     },
   });
@@ -124,7 +124,7 @@ const Signup = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            // navigation.navigate("signin");
+            navigation.navigate("SignIn");
             console.log('go to sign in');
           }}
         >
