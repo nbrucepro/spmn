@@ -12,12 +12,14 @@ import Navigator from "./src/components/navigation/Navigator";
 import { StyleSheet, View, Text } from "react-native";
 import Signup from "./src/screens/Signup";
 import RestaurantMenu from "./src/screens/RestaurantMenu";
+import ChooseRestaurant from "./src/screens/ChooseRestaurant";
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //   <Navigator />
-    // </NavigationContainer>
-    <RestaurantMenu/>
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
+    // <RestaurantMenu/>
+    // <ChooseRestaurant/>
   );
 }

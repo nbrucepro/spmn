@@ -49,7 +49,7 @@ const RestaurantMenu = ({ navigation, route }) => {
     }
   }, [token]);
   const selectMenu = (menu) => {
-    navigation.navigate("RestuarantMenuCart", {
+    navigation.navigate("RestaurantMenuCart", {
       menu: { ...menu, restaurant },
     });
   };

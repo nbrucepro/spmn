@@ -4,14 +4,17 @@ import {
   createStackNavigator,
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import * as SecureStore from "expo-secure-store";
-import React from "react";
+// import * as SecureStore from "expo-secure-store";
+import React,{useState,useEffect} from "react";
 import Signup from "../../screens/Signup";
 import { TouchableOpacity, View } from "react-native";
 import SignIn from "../../screens/SignIn";
+import DashboardScreen from "../../screens/Dashboard";
+import NotificationScreen from "../../screens/Notification";
+import ShoppingCartScreen from "../../screens/ShoppingCart";
 
 export default Navigator = () => {
-  return <AuthNavigator />;
+  return <AppNavigator />;
 };
 
 const AuthNavigator = () => {
@@ -41,18 +44,19 @@ const AuthNavigator = () => {
 const Tabs = createBottomTabNavigator();
 
 const AppNavigator = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
-    const getToken = async () => {
-      const token = await SecureStore.getItemAsync("token");
-      if (token) {
-        setIsAuthenticated(true);
-      }
-    };
+    console.log("Secure-store")
+    // const getToken = async () => {
+    //   const token = await SecureStore.getItemAsync("token");
+    //   if (token) {
+    //     setIsAuthenticated(true);
+    //   }
+    // };
     // getToken();
   }, []);
-
+  console.log(isAuthenticated);
   if (!isAuthenticated) return <AuthNavigator />;
 
   return (
@@ -103,7 +107,7 @@ const AppNavigator = () => {
             <AntDesign name="home" size={24} color={color} />
           ),
         }}
-        component={DashBoardScreen}
+        component={DashboardScreen}
       />
       <Tabs.Screen
         options={{
@@ -129,7 +133,7 @@ const AppNavigator = () => {
           ),
         }}
         name="Clock"
-        component={SearchStack}
+        component={NotificationScreen}
       />
       <Tabs.Screen
         options={{
