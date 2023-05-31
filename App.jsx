@@ -11,11 +11,13 @@ import "react-native-gesture-handler";
 import Navigator from "./src/components/navigation/Navigator";
 import { StyleSheet, View, Text } from "react-native";
 import Signup from "./src/screens/Signup";
+import RestaurantMenu from "./src/screens/RestaurantMenu";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Navigator />
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <Navigator />
+    // </NavigationContainer>
+    <RestaurantMenu/>
   );
 }

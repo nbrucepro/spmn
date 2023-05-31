@@ -139,7 +139,7 @@ const SignIn = ({ navigation }) => {
                     <Text
                     style={styles.formTextSignUp}
                     onPress={()=>{
-                        navigation.navigate('Signup');
+                        navigation.navigate('SigUnp');
                     }}
                     >
                                                 Sign up
