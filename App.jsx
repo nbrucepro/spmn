@@ -19,7 +19,5 @@ export default function App() {
     <NavigationContainer>
       <Navigator />
     </NavigationContainer>
-    // <RestaurantMenu/>
-    // <ChooseRestaurant/>
   );
 }

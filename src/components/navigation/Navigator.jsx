@@ -1,17 +1,16 @@
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import {
-    
-  createStackNavigator,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import * as SecureStore from "expo-secure-store";
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Signup from "../../screens/Signup";
 import { TouchableOpacity, View } from "react-native";
 import SignIn from "../../screens/SignIn";
 import DashboardScreen from "../../screens/Dashboard";
 import NotificationScreen from "../../screens/Notification";
 import ShoppingCartScreen from "../../screens/ShoppingCart";
+import ChooseRestaurant from "../../screens/ChooseRestaurant";
+import { SearchStack } from "../../stack";
 
 export default Navigator = () => {
   return <AppNavigator />;
@@ -25,7 +24,7 @@ const AuthNavigator = () => {
       screenOptions={{
         gestureEnabled: true,
         gestureDirection: "horizontal",
-         }}
+      }}
     >
       <Stack.Screen
         name="SignIn"
@@ -37,7 +36,7 @@ const AuthNavigator = () => {
         component={Signup}
         options={{ headerShown: false }}
       />
-    </Stack.Navigator> 
+    </Stack.Navigator>
   );
 };
 
@@ -47,7 +46,7 @@ const AppNavigator = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   useEffect(() => {
-    console.log("Secure-store")
+    console.log("Secure-store");
     // const getToken = async () => {
     //   const token = await SecureStore.getItemAsync("token");
     //   if (token) {
@@ -121,6 +120,15 @@ const AppNavigator = () => {
         }}
         name="Notification"
         component={NotificationScreen}
+      />
+      <Tabs.Screen
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="line-scan" size={24} color={color} />
+          ),
+        }}
+        name="Scan"
+        component={SearchStack}
       />
       <Tabs.Screen
         options={{
