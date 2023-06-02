@@ -2,7 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import BookmarkScreen from "../screens/Bookmark";
 import DashboardScreen from "../screens/Dashboard";
 import NotificationScreen from "../screens/Notification";
-// import SearchScreen from "../screens/Search";
+import SearchScreen from "../screens/Search";
 import ShoppingCartScreen from "../screens/ShoppingCart";
 // import CheckoutScreen from "../screens/Checkout";
 import RestaurantMenu from "../screens/RestaurantMenu";
@@ -69,7 +69,7 @@ const NotificationStack = ({ navigation }) => {
 const SearchStack = ({ navigation }) => {
   return (
     <Stack.Navigator
-      initialRouteName="ChooseRestaurant"
+      initialRouteName="Search"
       screenOptions={{
         headerStyle: { backgroundColor: "#42f44b" },
         headerTintColor: colors.white,
@@ -78,7 +78,7 @@ const SearchStack = ({ navigation }) => {
     >
       <Stack.Screen
         name="Search"
-        component={DashboardScreen}
+        component={SearchScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
