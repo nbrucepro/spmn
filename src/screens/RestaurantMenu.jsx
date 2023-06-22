@@ -49,9 +49,10 @@ const RestaurantMenu = ({ navigation, route }) => {
     }
   }, [token]);
   const selectMenu = (menu) => {
-    navigation.navigate("RestaurantMenuCart", {
-      menu: { ...menu, restaurant },
-    });
+    // navigation.navigate("RestaurantMenuCart", {
+    //   menu: { ...menu, restaurant },
+    // });
+    navigation.navigate("Checkout",{product:'product1'})
   };
 
   return (

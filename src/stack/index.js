@@ -9,6 +9,7 @@ import RestaurantMenu from "../screens/RestaurantMenu";
 // import RestaurantMenuCart from "../screens/RestaurantMenuCart";
 import colors from "../util/colors";
 import ChooseRestaurant from "../screens/ChooseRestaurant";
+import CheckoutScreen from "../screens/Checkout";
 
 const Stack = createStackNavigator();
 const DashboardStack = ({ navigation }) => {
@@ -42,7 +43,7 @@ const CheckoutStack = ({ navigation }) => {
     >
       <Stack.Screen
         name="Checkout"
-        component={DashboardScreen}
+        component={CheckoutScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -95,7 +96,18 @@ const SearchStack = ({ navigation }) => {
         name="RestaurantMenuCart"
         component={RestaurantMenu}
         options={{ headerShown: false }}
-      />
+      />     
+      <Stack.Screen
+      name="Checkout"
+      component={CheckoutScreen}    
+      options={{headerShown:false}}
+      // options={() => ({
+      //   tabBarStyle: {
+      //     display: "none",
+      //   },
+      //   tabBarButton: () => null,
+      // })}
+    />
     </Stack.Navigator>
   );
 };

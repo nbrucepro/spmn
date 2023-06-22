@@ -30,7 +30,7 @@ const Signup = ({ navigation }) => {
         Alert.alert("Error", "you must fill in all fields");
         return;
       }
-      const response = await fetch("", {
+      const response = await fetch("http://localhost:3500/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,12 +38,13 @@ const Signup = ({ navigation }) => {
         body: JSON.stringify({
           email: values.email,
           password: values.password,
-          mobile: values.mobile,
+          phoneNumber: values.mobile,
           firstName: values.fullName.split(" ")[0],
           lastName: values.fullName.split(" ")[1],
         }),
       });
       const data = await response.json();
+      console.log('values, ',values);
       if (!data) {
         console.log("");
       } else {
@@ -83,7 +84,7 @@ const Signup = ({ navigation }) => {
               style={styles.input}
               placeholder="Phone Number"
               autoCapitalize="none"
-              value={values.mobile}
+              value={values.mobile}              
               onChangeText={handleChange("mobile")}
             />
           </View>
@@ -104,6 +105,8 @@ const Signup = ({ navigation }) => {
               placeholder="Your password"
               autoCapitalize="none"
               value={values.password}
+              onChangeText={handleChange('password')}
+              secureTextEntry={true}
             />
           </View>
           <TouchableOpacity

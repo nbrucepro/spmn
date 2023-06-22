@@ -11,6 +11,7 @@ import NotificationScreen from "../../screens/Notification";
 import ShoppingCartScreen from "../../screens/ShoppingCart";
 import ChooseRestaurant from "../../screens/ChooseRestaurant";
 import { SearchStack } from "../../stack";
+import CheckoutScreen from "../../screens/Checkout";
 
 export default Navigator = () => {
   return <AppNavigator />;
@@ -43,21 +44,21 @@ const AuthNavigator = () => {
 const Tabs = createBottomTabNavigator();
 
 const AppNavigator = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   useEffect(() => {
-    console.log("Secure-store");
-    // const getToken = async () => {
-    //   const token = await SecureStore.getItemAsync("token");
-    //   if (token) {
-    //     setIsAuthenticated(true);
-    //   }
-    // };
-    // getToken();
+    const getToken = () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        setIsAuthenticated(true);
+      }
+    };
+    getToken();
   }, []);
-  console.log(isAuthenticated);
-  if (!isAuthenticated) return <AuthNavigator />;
-
+  if (!isAuthenticated) {
+    return (
+      <AuthNavigator />
+    );
+  }
   return (
     <Tabs.Navigator
       initialRouteName="Scan"
@@ -105,20 +106,21 @@ const AppNavigator = () => {
           tabBarIcon: ({ color }) => (
             <AntDesign name="home" size={24} color={color} />
           ),
+          tabBarStyle: { display: 'none' }
         }}
-        component={DashboardScreen}
+        component={CheckoutScreen} 
       />
       <Tabs.Screen
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="bell-badge-outline"
-              size={24}
+              size={24} 
               color={color}
             />
           ),
         }}
-        name="Notification"
+        name="Notification" 
         component={NotificationScreen}
       />
       <Tabs.Screen
